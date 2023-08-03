@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+   <head>
+        <meta charset="utf-8">
+        <title>Free Menu</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index_custom.css') }}"/>
+    </head>
+
+   <body>
+   
+      <h2>Hello {{ name }}!</h2>
+
+      </br>
+      <p><b>Enter the name of the restaurant:</b></p>
+      <p>
+         <input type ="text" name = "rest_name" />
+      </p>
+      
+      <p> 
+         <input type = "submit" value = "Get Menu" />
+      </p>
+
+      </br>
+      </br>
+      </br>
+
+      <table class="styled-table">
+          <thead>
+              <tr>
+                  <th>Menu Item</th>
+                  <th>Cost</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for key, value in result.items() %}
+               <tr>
+                  <td> {{ key }} </td>
+                  <td> {{ value }} </td>
+               </tr>
+               {% endfor %}
+          </tbody>
+      </table>
+
+
+
+   </body>
+</html>
