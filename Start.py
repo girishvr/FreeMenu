@@ -35,11 +35,20 @@ def result():
       	return render_template("restaurant_menu.html", result = dict, name = rest_name)
       	
 
+# To load the list of restaurant
+@app.route('/restaurant_list')
+def restaurant_list():
+	conn = get_db_connection()
+
+	dict_restaurants = conn.execute('SELECT * FROM restaurants').fetchall()
+	conn.close()
+
+	return render_template("restaurant_list.html", results = dict_restaurants)
 
 
+# To load the page for adding fresh menue for a restaurant
 @app.route('/add_menu/<name>')
 def add_restaurant_menu(name):
-
 	return render_template("add_menu.html", rest_name = name )
 
 
