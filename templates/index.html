@@ -1,47 +1,30 @@
-<!doctype html>
-<html>
-   <head>
-        <meta charset="utf-8">
-        <title>Free Menu</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index_custom.css') }}"/>
-    </head>
+<!-- Index file -->
+<!-- Start of the application FreeMenu -->
 
-   <body>
-   
-      <h2>Hello {{ name }}!</h2>
+
+{% extends 'base.html' %}
+
+
+{% block content %}
 
       </br>
-      <p><b>Enter the name of the restaurant:</b></p>
-      <p>
-         <input type ="text" name = "rest_name" />
-      </p>
-      
-      <p> 
-         <input type = "submit" value = "Get Menu" />
-      </p>
+
+      <h1>{% block title %} Hello {{ name }}! {% endblock %}</h1>
 
       </br>
-      </br>
-      </br>
 
-      <table class="styled-table">
-          <thead>
-              <tr>
-                  <th>Menu Item</th>
-                  <th>Cost</th>
-              </tr>
-          </thead>
-          <tbody>
-              {% for key, value in result.items() %}
-               <tr>
-                  <td> {{ key }} </td>
-                  <td> {{ value }} </td>
-               </tr>
-               {% endfor %}
-          </tbody>
-      </table>
+      <form action = "http://localhost:5000/restaurant_menu" method = "POST">
+         <p><b>Enter the name of the restaurant:</b></p>
+         <p>
+            <input type ="text" name = "rest_name" />
+         </p>
+         
+         <p> 
+            <input type = "submit" value = "Get Menu" />
+         </p>
+
+      </form>   
+
+{% endblock %}
 
 
-
-   </body>
-</html>

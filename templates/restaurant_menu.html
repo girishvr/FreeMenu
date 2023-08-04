@@ -1,0 +1,48 @@
+<!-- restaurant_menu.html -->
+
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+   <head>
+        <meta charset="utf-8">
+        <title>Free Menu</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index_custom.css') }}"/>
+    </head>
+
+   <body>
+   
+      </br>
+     
+      <h2>Restaurant Name: {{ name }}!</h2>
+
+      </br>
+      </br>
+      </br>
+
+      <table class="styled-table">
+          <thead>
+              <tr>
+                  <th>Menu Item</th>
+                  <th>Cost</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for key, value in result.items() %}
+               <tr>
+                  <td> {{ key }} </td>
+                  <td> {{ value }} </td>
+               </tr>
+               {% endfor %}
+          </tbody>
+      </table>
+
+
+   </body>
+
+
+
+{% endblock %}
