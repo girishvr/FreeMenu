@@ -1,7 +1,7 @@
 #Start.py
 #First file for Flask project
 import sqlite3
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
 
@@ -50,6 +50,25 @@ def restaurant_list():
 @app.route('/add_menu/<name>')
 def add_restaurant_menu(name):
 	return render_template("add_menu.html", rest_name = name )
+
+@app.route('/create', methods=('GET', 'POST'))
+def add_rest_menu():
+	if request.method == 'POST':
+		title = request.form['title']
+		cost = request.form['cost']
+		restaurant_id = request.form['rest_id']
+
+		if not title:
+			flash('Title/Cost is required!')
+		else:
+			conn = get_db_connection()
+			conn.execute('INSERT INTO menus (item_title, item_cost, item_restaurant_id) VALUES (?, ?)',(title, cost, restaurant_id))
+			conn.commit()
+			conn.close()
+			return redirect(url_for('index'))
+
+	return render_template('create.html')
+  
 
 
 def get_db_connection():

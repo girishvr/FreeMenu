@@ -14,8 +14,8 @@ CREATE TABLE menus (
     menu_id INTEGER PRIMARY KEY AUTOINCREMENT,
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     item_title TEXT NOT NULL,
-    item_cost TEXT NOT NULL
-    -- item_restaurant_id FOREIGN KEY REFERENCES restaurants(rest_id)
+    item_cost TEXT NOT NULL,
+    item_restaurant_id INTEGER REFERENCES restaurants (rest_id)
 );
 
 

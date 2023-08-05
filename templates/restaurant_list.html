@@ -26,6 +26,7 @@
       <table class="styled-table">
           <thead>
               <tr>
+                  <th> # </th>
                   <th>Restaurant Name</th>
                   <th>Location</th>
               </tr>
@@ -33,6 +34,7 @@
           <tbody>
               {% for item in results %}
                <tr>
+                  <td> {{ item['rest_id'] }} </td>
                   <td> {{ item['restaurant_title'] }} </td>
                   <td> {{ item['restaurant_location'] }} </td>
                </tr>
