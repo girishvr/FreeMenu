@@ -31,10 +31,10 @@
               </tr>
           </thead>
           <tbody>
-              {% for key, value in result.items() %}
+              {% for item in result %}
                <tr>
-                  <td> {{ key }} </td>
-                  <td> {{ value }} </td>
+                  <td> {{ item['item_title'] }} </td>
+                  <td> {{ item['item_cost'] }} </td>
                </tr>
                {% endfor %}
           </tbody>

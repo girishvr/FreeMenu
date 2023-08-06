@@ -22,9 +22,25 @@ cur.execute("INSERT INTO restaurants (restaurant_title, restaurant_location) VAL
             ('Sunrise', 'Hotel Sunrise, Delhi')
             )
 
-# cur.execute("INSERT INTO posts (title, content) VALUES (?, ?)",
-#             ('Second Post', 'Content for the second post')
-#             )
+cur.execute("INSERT INTO menus (item_title,item_cost,item_restaurant_id) VALUES (?, ?, ?)",
+            ('Green Tea', '10', 2)
+            )
+
+cur.execute("INSERT INTO menus (item_title,item_cost,item_restaurant_id) VALUES (?, ?, ?)",
+            ('Black Tea', '20', 2)
+            )
+
+cur.execute("INSERT INTO menus (item_title,item_cost,item_restaurant_id) VALUES (?, ?, ?)",
+            ('Herbal Tea', '30', 2)
+            )
+
+cur.execute("INSERT INTO menus (item_title,item_cost,item_restaurant_id) VALUES (?, ?, ?)",
+            ('Coffee', '50', 3)
+            )
+
+cur.execute("INSERT INTO menus (item_title,item_cost,item_restaurant_id) VALUES (?, ?, ?)",
+            ('Black Coffee', '40', 3)
+            )
 
 connection.commit()
 connection.close()
