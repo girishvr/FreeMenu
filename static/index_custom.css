@@ -1,11 +1,22 @@
 /*index_custom.css*/
 
 
+* {
+/* font-size: 100%;*/
+ font-family: "Cairo", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Cairo", sans-serif;
+    color: #000;
+}
+
+
 .styled-table {
 /*    border-collapse: collapse;*/
     margin: 15px 0;
     font-size: 0.9em;
-    font-family: sans-serif;
+    font-family: "Cairo", sans-serif;
     min-width: 300px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
@@ -14,7 +25,7 @@
 /*Styling the header*/
 
 .styled-table thead tr {
-    background-color: #009879;
+    background-color: #000;
     color: #ffffff;
     text-align: left;
 }
@@ -38,7 +49,7 @@
 }
 
 .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #000;
 }
 
 

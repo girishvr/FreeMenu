@@ -8,9 +8,108 @@
 
 	<html>
 		<body>
+		<div class="container">
 		</br>
 		</br>
 			<h3>{% block title %} Add a Menu for {{rest_name}}{% endblock %}</h3>
+
+			<!-- TODO -->
+			</br>
+			</br>
+			
+			<button type="button" class="pheasant-demure-button solid dark" id="form" >
+			  <span class="label">ADD NEW RESTAURANT</span>
+			</button>
+
+			</br>
+			</br>
+
+			<button type="button" class="pheasant-demure-button solid dark">
+			  <span class="label">ADD MENU ITEM</span>
+			</button>
+
+
+			<script>
+
+				 $('#form').on('click', function(){
+				    silverBox({
+
+				       customIcon: "/static/images/dinner.png",
+				       title: {
+				              text: "Add New Restaurant"
+				       },
+				       centerContent: true,
+				       text: "Enter Restaurant Information",
+				       footer: "<a href='#'>Need More Information?</a>",
+				       showCloseButton: true,
+				       input: [
+				              {
+				                     label: "Restaurant Name",
+				                     type: "text",				                  
+				                     placeHolder: "{{rest_name}}",
+				                     value : "{{rest_name}}",
+				                     id: "rest_name",				                   
+				                     maxLength: 30
+				              },
+				              {
+				                     label: "Location",
+				                     type: "text",
+				                     placeHolder: "Enter Restaurant Address",
+				                     id: "rest_loc",   
+				                     hint: "Enter short address"
+				              }
+				       ],
+   				       confirmButton: {
+				              text: "Save",
+				              closeOnClick: true,
+				              onClick : () => {
+				              	addNewRestaurant()
+				              }
+				       },
+				       cancelButton: {
+					       	closeOnClick: true
+				       }
+
+					})
+
+				 })
+
+				 // function onClose(){
+				 // 	console.log("On close called!")
+				 // }
+
+				 
+
+ 				function addNewRestaurant() {
+ 					var rest_name = document.getElementById("rest_name").value;
+ 					var rest_loc = document.getElementById("rest_loc").value;
+
+ 					if (rest_name == "" || rest_loc == ""){
+						showFailPrompt();
+						return;
+ 					}
+
+					console.log(rest_name);
+					console.log(rest_loc);
+				}
+
+
+				$('#alert').on('click', function(){
+					silverBox({
+				       alertIcon: "error",
+				       text: "Operation failed.",
+				       centerContent: true,
+				       cancelButton: {
+				              text: "OK"
+				       }
+					})
+				 })
+				
+
+
+			</script>
+
+		</div>
 		</body>
 	</html>
 

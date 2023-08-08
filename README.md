@@ -6,6 +6,9 @@ Free Menu Application For Restaurants
 # ref - https://www.tutorialspoint.com/flask/flask_application.htm
 # ref - https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
 
+<!-- Resources -->
+<!-- Button -->
+# ref - https://htmlcssfreebies.com/pheasant-demure-buttons
 
 ## First time setup on the system
 	- pip3 install Flask
@@ -22,6 +25,8 @@ Free Menu Application For Restaurants
 2. Go to the FreeMenu folder
 
 3. Python3 Start.py
+
+
 
 
 

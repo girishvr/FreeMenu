@@ -17,7 +17,6 @@ def result():
       result = request.form
       rest_name = result["rest_name"]
       restaurant_found = None
-      
       restaurants = get_all_restaurants()
 
       
@@ -30,8 +29,7 @@ def result():
       if restaurant_found == None:
       	return redirect(url_for('add_restaurant_menu', name = rest_name))      	
       else:
-      	dict = get_menu_for_restaurant(rest_id = 2)
-      	print('dict')
+      	dict = get_menu_for_restaurant(rest_id = restaurant_found['rest_id'])      	
       	print_sqlite_object(dict)
       	return render_template("restaurant_menu.html", result = dict, name = rest_name)
       	
