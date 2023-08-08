@@ -38,6 +38,7 @@ def result():
 @app.route('/restaurant_list')
 def restaurant_list():
 
+	print("List All restaurant")
 	restaurants = get_all_restaurants()
 	
 	return render_template("restaurant_list.html", results = restaurants)
@@ -48,6 +49,22 @@ def restaurant_list():
 def add_restaurant_menu(name):
 	return render_template("add_menu.html", rest_name = name )
 
+
+@app.route('/create_new', methods=('GET', 'POST'))
+def create_new_rest():
+	if request.method == 'POST':
+
+		rest_name = request.form['rest_name']
+		restaurant_loc = request.form['restaurant_loc']
+
+		if not rest_name:
+			flash('restaurant name/restaurant location is required!')
+		else:
+			save_new_restaurant(rest_name, restaurant_loc)
+			print("Save done")
+			return redirect(url_for('restaurant_list'))
+
+	return (''), 204
 
 # TODO - finish this 
 @app.route('/create', methods=('GET', 'POST'))
@@ -62,7 +79,7 @@ def add_rest_menu():
 			flash('Title/Cost is required!')
 		else:
 			save_menu_items(item_title, item_cost, item_restaurant_id)
-			# return redirect(url_for('index'))
+			
 
 	# return render_template('create.html')
 	return (''), 204
@@ -93,10 +110,19 @@ def get_all_restaurants():
 
 	return restaurants
 
+def save_new_restaurant(rest_name, restaurant_loc):
+	conn = get_db_connection()
+	conn.execute('INSERT INTO restaurants (restaurant_title, restaurant_location) VALUES (?, ?)',(rest_name, restaurant_loc))
+	conn.commit()
+	conn.close()
+	print('rest_name')
+	print('restaurant_loc')
+	print('save_new_restaurant')
+
 
 def save_menu_items(item_title, item_cost, item_restaurant_id):
 	conn = get_db_connection()
-	conn.execute('INSERT INTO menus (item_title, item_cost, item_restaurant_id) VALUES (?, ?)',(title, cost, restaurant_id))
+	conn.execute('INSERT INTO menus (item_title, item_cost, item_restaurant_id) VALUES (?,?,?)',(title, cost, restaurant_id))
 	conn.commit()
 	conn.close()
 
@@ -111,10 +137,6 @@ def get_menu_for_restaurant(rest_id):
 	conn.close()
 
 	return menus
-
-
-
-
 
 
 # =============================================================
