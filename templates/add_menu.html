@@ -73,35 +73,7 @@
 					})
 
 				 })
-
-				 function postData(path, params, method) {
-  
-		            // Create form
-		            const hidden_form = document.createElement('form');
-		  
-		            // Set method to post by default
-		            hidden_form.method = method || 'POST';
-		              
-		            // Set path
-		            hidden_form.action = path;
-		              
-		            for (const key in params) {
-		                if (params.hasOwnProperty(key)) {
-		                    const hidden_input = document.createElement
-		                        ('input');
-		                    hidden_input.type = 'hidden';
-		                    hidden_input.name = key;
-		                    hidden_input.value = params[key];
-		  
-		                    hidden_form.appendChild(hidden_input);
-		                }
-		            }
-		  
-		            document.body.appendChild(hidden_form);
-		            hidden_form.submit();
-		        }
-		  
-				 
+		  				 
 
  				function addNewRestaurant() {
  					var rest_name = document.getElementById("rest_name").value;
@@ -112,40 +84,13 @@
 						return;
  					}
 
-					console.log(rest_name);
-					console.log(rest_loc);
 					let data = { rest_name: rest_name, restaurant_loc: rest_loc};
 
 					// Call postData function   
 		            postData('http://localhost:5000/create_new',
 		                data, "POST");
 
-
-
-					// fetch("/post/data/here", {
-					//   method: "POST",
-					//   headers: {'Content-Type': 'application/json'}, 
-					//   body: JSON.stringify(data)
-					// }).then(res => {
-					//   console.log("Request complete! response:", res);
-					// });
-
-
-
 				}
-
-
-				$('#alert').on('click', function(){
-					silverBox({
-				       alertIcon: "error",
-				       text: "Operation failed.",
-				       centerContent: true,
-				       cancelButton: {
-				              text: "OK"
-				       }
-					})
-				 })
-				
 
 
 			</script>
