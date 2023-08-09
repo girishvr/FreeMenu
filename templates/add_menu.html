@@ -93,8 +93,85 @@
 
 		</div>
 
+		
+
+		<hr>
+
 
 		<form action='/create_menu/{{rest_name}}' method="post">
+
+		<table class="styled-table" id="menu-table">
+			<thead>
+			  <tr>
+			      <th>Menu Item</th>
+			      <th>Item Cost</th>
+			  </tr>
+			</thead>
+          
+			<tbody>
+			   <tr>
+			   	<div class="form-group">
+			      <td> <input type="text" name="title" placeholder="Item Name"
+			           class="form-control"
+			           value="">
+				        </input>
+			      </td>
+			  </div>
+			      <div class="form-group">
+			      <td><input name="cost" placeholder="Item cost"
+			              class="form-control"
+			              value="">
+			          </input> 
+			      </td>
+			  </div>
+			   </tr>
+			</tbody>
+	    </table>
+
+
+		<div class="form-group">
+		    <button type="button" class="pheasant-demure-button solid dark">
+			  <span class="label add_another">ADD MENU ITEM</span>
+			</button>
+			<button type="submit" class="pheasant-demure-button solid dark">
+			  <span class="label">SAVE MENU</span>
+			</button>
+		</div>
+	   
+	    </form>
+
+
+		<hr>
+
+		<script>
+		$('document').ready(function() {
+		  $('.add_another').click(function() {
+		      $("#menu-table").append('<tr><div class="form-group">			      <td> <input type="text" name="title" placeholder="Item Name"			           class="form-control"			           value="">				        </input>			      </td>			  </div>			      <div class="form-group">			      <td><input name="cost" placeholder="Item cost"			              class="form-control"			              value="">			          </input> 			      </td>			  </div></tr>');
+  		   });
+   		})		
+		</script>
+
+
+
+
+
+<!-- 		<tr>
+			<div class="form-group">
+				<td> 
+				<input type="text" name="title" placeholder="Item Name" class="form-control" value="{{ request.form['title']}}">
+		        </input>
+				</td>
+			</div>			  
+			<div class="form-group">
+		      <td>
+		      	<input name="cost" placeholder="Item cost" class="form-control">
+				</input>
+		      </td>
+			</div>
+		</tr> -->
+
+<!-- 
+		   <form action='/create_menu/{{rest_name}}' method="post">
 		    <div class="form-group">
 		        <label for="title">Menu Item</label>
 		        <input type="text" name="title" placeholder="Item Name"
@@ -114,8 +191,8 @@
 				</button>
 		    </div>
 		</form>
-		<hr>
-
+		<hr> -->
+		
 
 		</body>
 	</html>
