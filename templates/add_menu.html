@@ -144,10 +144,25 @@
 		<hr>
 
 		<script>
+
+		window.SomeDeleteRowFunction = function SomeDeleteRowFunction(o) {
+		     var p=o.parentNode.parentNode;
+		     p.parentNode.removeChild(p);
+		}	
+
+
+		// Function to add additional menu items in the table	
 		$('document').ready(function() {
-		  $('.add_another').click(function() {
-		      $("#menu-table").append('<tr><div class="form-group">			      <td> <input type="text" name="title" placeholder="Item Name"			           class="form-control"			           value="">				        </input>			      </td>			  </div>			      <div class="form-group">			      <td><input name="cost" placeholder="Item cost"			              class="form-control"			              value="">			          </input> 			      </td>			  </div></tr>');
-  		   });
+			
+			$('.remove_item').click(function() {
+				$("#menu-table").append()
+			});
+
+			$('.add_another').click(function() {
+
+				$("#menu-table").append('<tr><div class="form-group">			      <td> <input type="text" name="title" placeholder="Item Name"			           class="form-control"			           value="">				        </input>			      </td>			  </div>			      <div class="form-group">			      <td><input name="cost" placeholder="Item cost"			              class="form-control"			              value="">			          </input> 			      </td>			  </div><td ><input type="button" class="pheasant-demure-button solid dark" value="X" onclick="SomeDeleteRowFunction(this)"/></td></tr>');
+
+			});
    		})		
 		</script>
 
