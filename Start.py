@@ -24,13 +24,14 @@ def result():
       
       if restaurant_found == None:
          # Show Alert
+         msg = f"Please Enter Restaurant Name! Or ADD A NEW RESTAURANT"
          if len(rest_name) > 0:
-            msg = f"Restauran not found! - {rest_name}"
-            flash(msg, "warning")
-            rest_name = ""
-         # return redirect(url_for('add_restaurant_menu', name = rest_name))       
+            msg = f"Restauran Not Found! Try ADD NEW RESTAURANT"
+
+         flash(msg)
+         return redirect(url_for('index'))       
          # Stay on the same page         
-         return (''), 204      
+         # return (''), 204      
       else:
          dict = get_menu_for_restaurant(rest_id = restaurant_found['rest_id'])         
          print_sqlite_object(dict)
@@ -88,7 +89,7 @@ def create_new_rest():
          flash('restaurant name/restaurant location is required!')
       else:
          save_new_restaurant(rest_name, restaurant_loc)
-         print("Save New Restaurant done")
+         flash("New Restaurant Added")
          return redirect(url_for('restaurant_list'))
 
    return (''), 204
@@ -118,15 +119,13 @@ def add_rest_menu(rest_name):
             item_title = item_list[i]
             item_cost = cost_list[i]
          
-            if not item_title:
+            if not item_title or not item_cost:
                print('Title/Cost is required!')
             else:
                save_menu_items(item_title, item_cost, item_restaurant_id)
-               print("Saved")
-      # refresh if restaurant is found and menu added         
-      # return redirect(url_for('add_restaurant_menu', name = rest_name))  
 
-      #Load Restaurant page with the menu     
+      #Load Restaurant page with the menu
+      flash("Menu Item(s) Saved")
       return redirect(url_for('get_restaurant_menu', name = rest_name))       
 
 

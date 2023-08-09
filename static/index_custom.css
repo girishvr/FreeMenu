@@ -8,9 +8,18 @@
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "Cairo", sans-serif;
-    color: #000;
+    color: #000;    
 }
 
+
+
+.alert-warning {
+    border-color: #fff;
+    background-color: #fff0f0;
+    color: #111;
+    font-family: "Cairo", sans-serif;
+    font-weight: 530;
+}
 
 .styled-table {
 /*    border-collapse: collapse;*/
