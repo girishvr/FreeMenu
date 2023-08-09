@@ -22,11 +22,7 @@
 			</button>
 
 			</br>
-			</br>
-
-			<button type="button" class="pheasant-demure-button solid dark">
-			  <span class="label">ADD MENU ITEM</span>
-			</button>
+			</br>			
 
 
 			<script>
@@ -46,7 +42,7 @@
 				              {
 				                     label: "Restaurant Name",
 				                     type: "text",				                  
-				                     placeHolder: "{{rest_name}}",
+				                     placeHolder: "Enter Restaurant Name",
 				                     value : "{{rest_name}}",
 				                     id: "rest_name",				                   
 				                     maxLength: 30
@@ -96,6 +92,31 @@
 			</script>
 
 		</div>
+
+
+		<form action='/create_menu/{{rest_name}}' method="post">
+		    <div class="form-group">
+		        <label for="title">Menu Item</label>
+		        <input type="text" name="title" placeholder="Item Name"
+		               class="form-control"
+		               value="{{ request.form['title']}}">
+		        </input>
+		    </div>
+
+		    <div class="form-group">
+		        <label for="content">Item Cost</label>
+		        <input name="cost" placeholder="Item cost"
+		                  class="form-control">{{ request.form['content'] }}</input>
+		    </div>
+		    <div class="form-group">
+		        <button type="submit" class="pheasant-demure-button solid dark">
+				  <span class="label">ADD MENU ITEM</span>
+				</button>
+		    </div>
+		</form>
+		<hr>
+
+
 		</body>
 	</html>
 

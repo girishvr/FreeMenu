@@ -348,7 +348,7 @@ template {
 }
 
 html {
-  font-family: sans-serif;
+  font-family: "Cairo", sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -420,8 +420,8 @@ a img {
 --------
 */
 :root {
-  --global-heading-font-family: "Fira Sans", sans-serif;
-  --global-body-font-family: "Oxygen", sans-serif;
+  --global-heading-font-family: "Cairo", sans-serif;
+  --global-body-font-family: "Cairo", sans-serif;
   --global-code-font-family: "menlo", "monaco", "consolas", "Courier New", "monospace";
   --global-black-color: #000;
   --global-space-color: #383961;

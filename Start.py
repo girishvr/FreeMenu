@@ -9,7 +9,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-   
    return render_template("index.html", name = "Darling")
 
 
@@ -19,15 +18,17 @@ def result():
    if request.method == 'POST':
       result = request.form
       rest_name = result["rest_name"] 
-      restaurant_found = None
-      restaurants = get_all_restaurants()
+      
+      restaurant_found = get_restaurant_by_name(rest_name)
+      # restaurant_found = None
+      # restaurants = get_all_restaurants()
 
       
-      # check if hotel is present in the list
-      for rest in restaurants:
-         if rest['restaurant_title'] == rest_name:
-            restaurant_found = rest
-            break
+      # # check if hotel is present in the list
+      # for rest in restaurants:
+      #    if rest['restaurant_title'] == rest_name:
+      #       restaurant_found = rest
+      #       break
 
       if restaurant_found == None:
          return redirect(url_for('add_restaurant_menu', name = rest_name))       
@@ -85,24 +86,42 @@ def create_new_rest():
 
 
 # TODO - finish this 
-@app.route('/create', methods=('GET', 'POST'))
-def add_rest_menu():
+@app.route('/create_menu/<rest_name>', methods=('GET', 'POST'))
+def add_rest_menu(rest_name):
+   print("add_rest_menu")
+   print(request.form['title'])
+   print(request.form['cost'])
+   print(rest_name)
+
    if request.method == 'POST':
 
-      title = request.form['title']
-      cost = request.form['cost']
-      restaurant_id = request.form['rest_id']
+      item_title = request.form['title']
+      item_cost = request.form['cost']
+      
+      restaurant_found = get_restaurant_by_name(rest_name)
 
-      if not title:
-         flash('Title/Cost is required!')
+      item_restaurant_id = restaurant_found['rest_id']
+
+      if not item_title:
+         print('Title/Cost is required!')
       else:
          save_menu_items(item_title, item_cost, item_restaurant_id)
-         
+         print("Saved")
 
    # return render_template('create.html')
    return (''), 204
  
 
+#For later - delete an item
+@app.route('/<int:id>/delete', methods=('POST',))
+def delete(id):
+    post = get_post(id)
+    conn = get_db_connection()
+    conn.execute('DELETE FROM posts WHERE id = ?', (id,))
+    conn.commit()
+    conn.close()
+    flash('"{}" was successfully deleted!'.format(post['title']))
+    return redirect(url_for('index'))
 
 # ------------------------------------------------------------------------------------------------ #
 # ------------ DB calls ---------------- #
@@ -140,7 +159,7 @@ def save_new_restaurant(rest_name, restaurant_loc):
    print('save_new_restaurant')
 
 
-def save_menu_items(item_title, item_cost, item_restaurant_id):
+def save_menu_items(title, cost, restaurant_id):
    conn = get_db_connection()
    conn.execute('INSERT INTO menus (item_title, item_cost, item_restaurant_id) VALUES (?,?,?)',(title, cost, restaurant_id))
    conn.commit()
@@ -162,6 +181,18 @@ def get_menu_for_restaurant(rest_id):
 # =============================================================
 
 # Using a custom factory to get row results as a pure dictionary.
+
+def get_restaurant_by_name(rest_name):
+   restaurant_found = None
+   restaurants = get_all_restaurants()
+
+   # check if hotel is present in the list
+   for rest in restaurants:
+      if rest['restaurant_title'] == rest_name:
+         restaurant_found = rest
+         break
+
+   return restaurant_found         
 
 def dict_factory(cursor, row):
    d = {}
