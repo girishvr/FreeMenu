@@ -85,31 +85,40 @@ def create_new_rest():
    return (''), 204
 
 
-# TODO - finish this 
+# Method saves list of menu items sent from table - /add_menu page
 @app.route('/create_menu/<rest_name>', methods=('GET', 'POST'))
 def add_rest_menu(rest_name):
-   print("add_rest_menu")
-   print(request.form['title'])
-   print(request.form['cost'])
-   print(rest_name)
-
-   if request.method == 'POST':
-
-      item_title = request.form['title']
-      item_cost = request.form['cost']
       
+   data = request.form
+   
+   if request.method == 'POST':
+      # Get list of items and costs
+      item_list = data.getlist('title')
+      cost_list = data.getlist('cost')
+
+      # Check if restaurant exists
       restaurant_found = get_restaurant_by_name(rest_name)
 
-      item_restaurant_id = restaurant_found['rest_id']
+      if restaurant_found != None:
 
-      if not item_title:
-         print('Title/Cost is required!')
-      else:
-         save_menu_items(item_title, item_cost, item_restaurant_id)
-         print("Saved")
+         item_restaurant_id = restaurant_found['rest_id']
 
-   # return render_template('create.html')
+         # One by one add menue items
+         for i in range(len(item_list)):
+
+            item_title = item_list[i]
+            item_cost = cost_list[i]
+         
+            if not item_title:
+               print('Title/Cost is required!')
+            else:
+               save_menu_items(item_title, item_cost, item_restaurant_id)
+               print("Saved")
+      # refresh if restaurant is found and menu added         
+      return redirect(url_for('add_restaurant_menu', name = rest_name))       
+
    return (''), 204
+   
  
 
 #For later - delete an item

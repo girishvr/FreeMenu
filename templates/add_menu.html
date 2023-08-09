@@ -166,8 +166,38 @@
    		})		
 		</script>
 
-
-
+<!-- 
+		<script>
+		    function Update(){
+		         var result = [];
+		         var tr = $("#TestTable tr");              
+		                 for (var i = 1; i < tr.length; i++) 
+		                 {
+		                        var tds = $(tr[i]).find("td");
+		                        if (tds.length > 0) {
+		                            result.push({
+		                                "Name" : tds[0].innerHTML,
+		                                "Age" : tds[1].innerHTML,
+		                                "Country" : tds[2].innerHTML
+		                            })
+		                        }
+		                        
+		                        
+		                 }
+		                    var jsonData = { 
+		                        "personLst" : result
+		                    }
+		                 $.ajax({
+		                    dataType: 'json',            
+		                    type: "Post", 
+		                    data: jsonData,
+		                    url: "/Home/Privacy"
+		                    
+		                 })
+		                 
+		                
+		    }
+		    </script> -->
 
 
 <!-- 		<tr>
