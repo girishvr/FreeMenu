@@ -16,12 +16,9 @@
 	<body>
    
       </br>
-     
       <h2>Restaurant on FreeMenu App</h2>
-
-      </br>
-      </br>
-      </br>
+      <hr>
+      </br>      
 
       <table class="styled-table">
           <thead>
@@ -54,6 +51,80 @@
         }
 
       </script>
+
+      </br>
+
+      <!-- -------------------Modal To Add New Restaurant------------------------ -->
+      
+      <button type="button" class="pheasant-demure-button solid dark" id="form" >
+        <span class="label">ADD NEW RESTAURANT</span>
+      </button>
+
+      <script>
+
+         $('#form').on('click', function(){
+            silverBox({
+
+               customIcon: "/static/images/dinner.png",
+               title: {
+                      text: "Add New Restaurant"
+               },
+               centerContent: true,
+               text: "Enter Restaurant Information",
+               footer: "<a href='#'>Need More Information?</a>",
+               showCloseButton: true,
+               input: [
+                      {
+                             label: "Restaurant Name",
+                             type: "text",                          
+                             placeHolder: "Enter Restaurant Name",
+                             value : "{{rest_name}}",
+                             id: "rest_name",                          
+                             maxLength: 30
+                      },
+                      {
+                             label: "Location",
+                             type: "text",
+                             placeHolder: "Enter Restaurant Address",
+                             id: "rest_loc",   
+                             hint: "Enter short address"
+                      }
+               ],
+                 confirmButton: {
+                      text: "Save",
+                      closeOnClick: true,
+                      onClick : () => {
+                        addNewRestaurant()
+                      }
+               },
+               cancelButton: {
+                  closeOnClick: true
+               }
+
+          })
+
+         })
+               
+        function addNewRestaurant() {
+          var rest_name = document.getElementById("rest_name").value;
+          var rest_loc = document.getElementById("rest_loc").value;
+
+          if (rest_name == "" || rest_loc == ""){
+            showFailPrompt();
+            return;
+          }
+
+          let data = { rest_name: rest_name, restaurant_loc: rest_loc};
+
+          // Call postData function   
+                postData('http://localhost:5000/create_new',
+                    data, "POST");
+
+        }
+
+      </script>
+      <!-- -------------------END of Modal To Add New Restaurant------------------------ -->
+
   
 
 

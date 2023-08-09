@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+   print("Index Page")
    return render_template("index.html", name = "Darling")
 
 
@@ -20,16 +21,7 @@ def result():
       rest_name = result["rest_name"] 
       
       restaurant_found = get_restaurant_by_name(rest_name)
-      # restaurant_found = None
-      # restaurants = get_all_restaurants()
-
       
-      # # check if hotel is present in the list
-      # for rest in restaurants:
-      #    if rest['restaurant_title'] == rest_name:
-      #       restaurant_found = rest
-      #       break
-
       if restaurant_found == None:
          return redirect(url_for('add_restaurant_menu', name = rest_name))       
       else:
@@ -48,6 +40,17 @@ def result():
       return render_template("restaurant_menu.html", result = dict, name = rest_name)
    
          
+@app.route('/get_menu/<name>')
+def get_restaurant_menu(name):
+   
+   restaurant_found = get_restaurant_by_name(name)
+   if restaurant_found == None:
+         return redirect(url_for('add_restaurant_menu', name = name))       
+   else:
+      dict = get_menu_for_restaurant(rest_id = restaurant_found['rest_id'])         
+      return render_template("restaurant_menu.html", result = dict, name = name)
+   # Stay on the same page         
+   return (''), 204
 
 
 # To load the list of restaurant
@@ -67,7 +70,6 @@ def add_restaurant_menu(name):
    return render_template("add_menu.html", rest_name = name )
 
 
-
 @app.route('/create_new', methods=('GET', 'POST'))
 def create_new_rest():
    if request.method == 'POST':
@@ -79,7 +81,7 @@ def create_new_rest():
          flash('restaurant name/restaurant location is required!')
       else:
          save_new_restaurant(rest_name, restaurant_loc)
-         print("Save done")
+         print("Save New Restaurant done")
          return redirect(url_for('restaurant_list'))
 
    return (''), 204
@@ -115,7 +117,11 @@ def add_rest_menu(rest_name):
                save_menu_items(item_title, item_cost, item_restaurant_id)
                print("Saved")
       # refresh if restaurant is found and menu added         
-      return redirect(url_for('add_restaurant_menu', name = rest_name))       
+      # return redirect(url_for('add_restaurant_menu', name = rest_name))  
+
+      #Load Restaurant page with the menu     
+      return redirect(url_for('get_restaurant_menu', name = rest_name))       
+
 
    return (''), 204
    

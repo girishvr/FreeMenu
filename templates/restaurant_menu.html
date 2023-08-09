@@ -28,6 +28,7 @@
               <tr>
                   <th>Menu Item</th>
                   <th>Cost</th>
+                  <!-- <th></th> -->
               </tr>
           </thead>
           <tbody>
@@ -35,11 +36,19 @@
                <tr>
                   <td> {{ item['item_title'] }} </td>
                   <td> {{ item['item_cost'] }} </td>
+                  <!-- <td ><input type="button" class="pheasant-demure-button solid dark " value="X" onclick="SomeDeleteRowFunction(this)"/></td> -->
                </tr>
                {% endfor %}
           </tbody>
       </table>
 
+      <hr>
+
+      <form action = "http://localhost:5000/add_menu/{{name}}" method = "GET">
+        <button type="submit" class="pheasant-demure-button solid dark" onclick="">
+          <span class="label" >ADD MENU ITEM</span>
+        </button>
+      </form>
 
    </body>
 
