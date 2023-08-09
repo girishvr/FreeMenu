@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
 
-
+app.secret_key = 'Free-Menu-GVR2003MANDVI'
 
 @app.route('/')
 def index():
@@ -23,7 +23,14 @@ def result():
       restaurant_found = get_restaurant_by_name(rest_name)
       
       if restaurant_found == None:
-         return redirect(url_for('add_restaurant_menu', name = rest_name))       
+         # Show Alert
+         if len(rest_name) > 0:
+            msg = f"Restauran not found! - {rest_name}"
+            flash(msg, "warning")
+            rest_name = ""
+         # return redirect(url_for('add_restaurant_menu', name = rest_name))       
+         # Stay on the same page         
+         return (''), 204      
       else:
          dict = get_menu_for_restaurant(rest_id = restaurant_found['rest_id'])         
          print_sqlite_object(dict)

@@ -42,8 +42,8 @@
       <script>
   
         function loadRestaurant(index, rest_name){
-            console.log(rest_name);
             let data = { "rest_id": index, "rest_name" : rest_name};
+            console.log(data);
 
           // Call postData function - GET 
                 postData('http://localhost:5000/restaurant_menu',
@@ -54,76 +54,13 @@
 
       </br>
 
-      <!-- -------------------Modal To Add New Restaurant------------------------ -->
+      <!-- -------------------To Add New Restaurant------------------------ -->
       
-      <button type="button" class="pheasant-demure-button solid dark" id="form" >
+      <button type="button" class="pheasant-demure-button solid dark" onclick="addRestAlert()" >
         <span class="label">ADD NEW RESTAURANT</span>
       </button>
 
-      <script>
-
-         $('#form').on('click', function(){
-            silverBox({
-
-               customIcon: "/static/images/dinner.png",
-               title: {
-                      text: "Add New Restaurant"
-               },
-               centerContent: true,
-               text: "Enter Restaurant Information",
-               footer: "<a href='#'>Need More Information?</a>",
-               showCloseButton: true,
-               input: [
-                      {
-                             label: "Restaurant Name",
-                             type: "text",                          
-                             placeHolder: "Enter Restaurant Name",
-                             value : "{{rest_name}}",
-                             id: "rest_name",                          
-                             maxLength: 30
-                      },
-                      {
-                             label: "Location",
-                             type: "text",
-                             placeHolder: "Enter Restaurant Address",
-                             id: "rest_loc",   
-                             hint: "Enter short address"
-                      }
-               ],
-                 confirmButton: {
-                      text: "Save",
-                      closeOnClick: true,
-                      onClick : () => {
-                        addNewRestaurant()
-                      }
-               },
-               cancelButton: {
-                  closeOnClick: true
-               }
-
-          })
-
-         })
-               
-        function addNewRestaurant() {
-          var rest_name = document.getElementById("rest_name").value;
-          var rest_loc = document.getElementById("rest_loc").value;
-
-          if (rest_name == "" || rest_loc == ""){
-            showFailPrompt();
-            return;
-          }
-
-          let data = { rest_name: rest_name, restaurant_loc: rest_loc};
-
-          // Call postData function   
-                postData('http://localhost:5000/create_new',
-                    data, "POST");
-
-        }
-
-      </script>
-      <!-- -------------------END of Modal To Add New Restaurant------------------------ -->
+      <!-- -------------------END of Add New Restaurant------------------------ -->
 
   
 
