@@ -31,21 +31,41 @@ function postData(path, params, method) {
 
 function addNewRestaurant() {
 
+    // Get restaurant information from the input fields
     var rest_name = document.getElementById("rest_name").value;
     var rest_loc = document.getElementById("rest_loc").value;
 
+    // Validation check
     if (rest_name == "" || rest_loc == ""){
-    showFailPrompt();
-    return;
+        showFailPrompt();
+        return;
     }
 
+    // Parameters
     let data = { rest_name: rest_name, restaurant_loc: rest_loc};
 
     // Call postData function   
-        postData('http://localhost:5000/create_new',
-            data, "POST");
+    postData('http://localhost:5000/create_new', data, "POST");
 
 }
+// SilverBox usage from the developers ://
+
+// silverBox({
+//   input: {
+//     name: "saber",
+//     value: "sword"
+//   },
+//   confirmButton: {
+//     closeOnClick: false,
+//     onClick: () => {
+//       // Select the input (or inputs) you need
+//       const saber = document.querySelector(".silverBox input[name='saber']")
+      
+//       // Do stuff with their values
+//       console.log(saber.value);
+//     },
+//   },
+// });
 
 function addRestAlert(){
     silverBox({

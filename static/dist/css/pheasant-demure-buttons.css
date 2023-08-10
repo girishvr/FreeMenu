@@ -119,7 +119,7 @@ input[type=submit].pheasant-demure-button {
   animation: pheasantBounce 1s infinite linear;
 }
 .pheasant-demure-button.round-corner {
-/*  border-radius: 1.5625rem;*/
+  border-radius: 1.5625rem;
 }
 .pheasant-demure-button.curtain-solid.curtain-light.curtain-to-right {
   background: linear-gradient(to right, var(--button-dark-bg-color) 50%, var(--button-light-bg-color) 50%);

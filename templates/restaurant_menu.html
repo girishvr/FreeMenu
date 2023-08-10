@@ -6,18 +6,11 @@
 
 {% block content %}
 
-
-   <head>
-        <meta charset="utf-8">
-        <title>Free Menu</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index_custom.css') }}"/>
-    </head>
-
    <body>
    
       </br>
      
-      <h3>Restaurant Name: {{ name }}!</h3>
+      <h3>The Restaurant Name: {{ name }}!</h3>
 
       </br>
 
@@ -26,7 +19,7 @@
               <tr>
                   <th>Menu Item</th>
                   <th>Cost</th>
-                  <!-- <th></th> -->
+                  <th></th>
               </tr>
           </thead>
           <tbody>
@@ -34,7 +27,7 @@
                <tr>
                   <td> {{ item['item_title'] }} </td>
                   <td> {{ item['item_cost'] }} </td>
-                  <!-- <td ><input type="button" class="pheasant-demure-button solid dark " value="X" onclick="SomeDeleteRowFunction(this)"/></td> -->
+                  <td ><input type="button" class="pheasant-demure-button solid light" value="X" onclick="SomeDeleteRowFunction(this)"/></td>
                </tr>
                {% endfor %}
           </tbody>
@@ -45,6 +38,14 @@
       <form action = "http://localhost:5000/add_menu/{{name}}" method = "GET">
         <button type="submit" class="pheasant-demure-button solid dark" onclick="">
           <span class="label" >ADD MENU ITEM</span>
+        </button>
+      </form>
+    
+    </br>
+    
+    <form action = "http://localhost:5000/get_qr/{{name}}" method = "GET">
+        <button type="submit" class="pheasant-demure-button solid dark" >
+          <span class="label" >GET QR CODE</span>
         </button>
       </form>
 
