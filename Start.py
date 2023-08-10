@@ -19,7 +19,7 @@ def index():
 
 
 @app.route('/restaurant_menu',methods = ['POST', 'GET'])
-def result():
+def restaurant_menu_result():
 	if request.method == 'POST':
 		result = request.form
 		rest_name = result["rest_name"] 
@@ -127,14 +127,19 @@ def add_rest_menu(rest_name):
 				item_cost = cost_list[i]
 			
 				if not item_title or not item_cost:
-					print('Title/Cost is required!')
+					flash('Title/Cost is required!')
+					break
 				else:
 					save_menu_items(item_title, item_cost, item_restaurant_id)
 
+			# for loop end	
+		
 		#Load Restaurant page with the menu
 		flash("Menu Item(s) Saved")
-		return redirect(url_for('get_restaurant_menu', name = rest_name))       
+		return redirect(url_for('restaurant_menu_result', rest_name = rest_name, rest_id = item_restaurant_id))       
 
+		# return render_template("restaurant_menu.html", result = dict, name = rest_name)
+		# return redirect(url_for('get_restaurant_menu', name = rest_name))       
 
 	return (''), 204
 
