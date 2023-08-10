@@ -3,15 +3,15 @@ Free Menu Application For Restaurants
 
 # This is a free menue project build using Flask 
 
-# ref - https://www.tutorialspoint.com/flask/flask_application.htm
-# ref - https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
+	### ref - https://www.tutorialspoint.com/flask/flask_application.htm
+	### ref - https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
 
 <!-- Resources -->
 <!-- Button -->
-# ref - https://htmlcssfreebies.com/pheasant-demure-buttons
+	### ref - https://htmlcssfreebies.com/pheasant-demure-buttons
 
 <!-- QR Code -->
-# ref - https://marcoagner.github.io/Flask-QRcode/
+	### ref - https://marcoagner.github.io/Flask-QRcode/
 
 ## First time setup on the system
 	- pip3 install Flask
