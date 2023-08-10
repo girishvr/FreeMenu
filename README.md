@@ -23,6 +23,7 @@ Free Menu Application For Restaurants
 
 ## First time setup on the system
 	- pip3 install Flask
+	- pip3 install Flask-QRcode
 	- pip3 install virtualenv
 	- virtualenv venv
 
