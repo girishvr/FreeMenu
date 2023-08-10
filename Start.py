@@ -152,7 +152,7 @@ def get_qr(rest_name):
 	restaurant_link = request.url_root + "get_menu/" + rest_name
 	print(restaurant_link)
 
-	return render_template('get_qr.html', rest_link=restaurant_link)
+	return render_template('get_qr.html', rest_link=restaurant_link, rest_name = rest_name)
 
 	  
 # TODO - to delete/edit menu or restaurants

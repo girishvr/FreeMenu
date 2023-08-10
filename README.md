@@ -10,6 +10,9 @@ Free Menu Application For Restaurants
 <!-- Button -->
 # ref - https://htmlcssfreebies.com/pheasant-demure-buttons
 
+<!-- QR Code -->
+# ref - https://marcoagner.github.io/Flask-QRcode/
+
 ## First time setup on the system
 	- pip3 install Flask
 	- pip3 install virtualenv
@@ -18,15 +21,17 @@ Free Menu Application For Restaurants
 ## Steps to set up database
 
 ## Steps to run the application
-1. Set up Flask Environment - install virtualenv for development environment	
-	
-	- source venv/bin/activate
+### 1. Set up Flask Environment - install virtualenv for development environment		
 
-2. Go to the FreeMenu folder
+	source venv/bin/activate
 
-3. Python3 Start.py
+### 2. Go to the FreeMenu folder
 
+### 3. Python3 Start.py
 
+# Direct Build - script written in build.sh file
+
+	./build.sh
 
 
 
