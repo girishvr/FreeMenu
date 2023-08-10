@@ -68,9 +68,11 @@ function addNewRestaurant() {
 //   },
 // });
 
+
+
 function addRestAlert(){
     silverBox({
-       customIcon: "/static/images/dinner.png",
+       customIcon: "http://13.126.62.86:5000/static/images/dinner.png",
        title: {
               text: "Add New Restaurant"
        },

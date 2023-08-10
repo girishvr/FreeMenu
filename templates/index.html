@@ -11,7 +11,6 @@
       <h3>{% block title %} Hello {{ name }}! {% endblock %}</h3>
 
       </br>
-      <!-- <form action = "http://localhost:5000/restaurant_menu" method = "POST"> -->
       <form action = "{{ url_for('restaurant_menu_result')}}" method = "POST">
          <p><b>Enter the name of the restaurant:</b></p>
          <p>
@@ -27,7 +26,6 @@
       <!-- -------------------To Add New Restaurant------------------------ -->
       
       <button type="button" class="pheasant-demure-button solid dark" onclick="addRestAlert()" >
-      <!-- <button type="button" class="pheasant-demure-button solid dark" onclick="showAlertNow()" > -->
         <span class="label">ADD NEW RESTAURANT</span>
       </button>
 
@@ -41,4 +39,6 @@
       
 {% endblock %}
 
+      <!-- <button type="button" class="pheasant-demure-button solid dark" onclick="showAlertNow()" > -->
 
+      <!-- <form action = "http://localhost:5000/restaurant_menu" method = "POST"> -->
