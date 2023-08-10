@@ -38,7 +38,7 @@ Free Menu Application For Restaurants
 
 ### 2. Go to the FreeMenu folder
 
-	Python3 Start.py
+	Python3 app.py
 
 ## Direct Build - script written in build.sh file
 

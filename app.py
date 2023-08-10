@@ -1,4 +1,4 @@
-#Start.py
+#app.py
 #First file for Flask project
 import sqlite3
 from flask_qrcode import QRcode
