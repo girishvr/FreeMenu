@@ -1,12 +1,12 @@
 #app.py
 #First file for Flask project
 import sqlite3
-# from flask_qrcode import QRcode
+from flask_qrcode import QRcode
 from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
 
-# QRcode(app)
+QRcode(app)
 
 # TODO - Change this
 app.secret_key = 'Free-Menu-GVR2003MANDVI'
