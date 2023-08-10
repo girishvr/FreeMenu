@@ -427,7 +427,7 @@ a img {
   --global-space-color: #383961;
   --global-white-color: #fff;
   --global-cadet-color: #292a47;
-  --global-spring-color: #dbdfac;
+  --global-spring-color: #f15152; /*#dbdfac;*/
   --body-bg-color: var(--global-space-color);
   --body-text-color: var(--global-white-color);
   --link-text-color: var(--global-spring-color);

@@ -74,14 +74,15 @@ function addRestAlert(){
               }
        ],
          confirmButton: {
-              text: "Save",
+              text: "SAVE",
               closeOnClick: true,
               onClick : () => {
                 addNewRestaurant()
               }
        },
        cancelButton: {
-          closeOnClick: true
+            text: "CANCEL",
+            closeOnClick: true
        }
 
     })

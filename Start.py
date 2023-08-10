@@ -175,9 +175,6 @@ def save_new_restaurant(rest_name, restaurant_loc):
    conn.execute('INSERT INTO restaurants (restaurant_title, restaurant_location) VALUES (?, ?)',(rest_name, restaurant_loc))
    conn.commit()
    conn.close()
-   print('rest_name')
-   print('restaurant_loc')
-   print('save_new_restaurant')
 
 
 def save_menu_items(title, cost, restaurant_id):

@@ -12,7 +12,7 @@
   --silverBox-border: 0px solid;
   --silverBox-timer-bar-height: 3px;
   --silverBox-timer-bar-border-radius: 10px;
-  --silverBox-border-radius: 20px;
+  --silverBox-border-radius: 5px;
   --silverBox-z-index: 1402;
   --silverBox-width: 90vw;
   --silverBox-max-width: min-content;
@@ -69,7 +69,7 @@
   --silverBox-error-size: 50px;
   --silverBox-error-icon-inside-size: 30px;
   --silverBox-error-icon-width: 3px;
-  --silverBox-button-border-radius: 8px;
+  --silverBox-button-border-radius: 1px;
   --silverBox-button-icon-border-radius: 10px;
   --silverBox-button-border-width: 1px;
   --silverBox-button-font-size: 16px;
@@ -85,7 +85,7 @@
   --silverBox-input-container-flex-wrap: wrap;
   --silverBox-input-font-size: 16px;
   --silverBox-input-padding: 10px;
-  --silverBox-input-border-radius: 8px;
+  --silverBox-input-border-radius: 5px;
   --silverBox-inside-input-gap: 7px;
   --silverBox-input-parent-gap: 10px 0;
   --silverBox-input-font-weight: 500;
@@ -117,11 +117,12 @@
   --silverBox-border-color: #fff;
   --silverBox-timer-bar: #bbb;
   --silverBox-title-color: #000;
+  --silverBox-title-color-hover:#f15152;
   --silverBox-text-color: #475467;
   --silverBox-confirm-color: #fff;
-  --silverBox-confirm-bg-color: #7f56d9;
-  --silverBox-confirm-border-color: #7f56d9;
-  --silverBox-confirm-hover-color: #a86ff9;
+  --silverBox-confirm-bg-color: #f15152; /*#7f56d9;*/
+  --silverBox-confirm-border-color: #f15152; /*#7f56d9;*/
+  --silverBox-confirm-hover-color: #f63232; /*#a86ff9;*/
   --silverBox-deny-color: #fff;
   --silverBox-deny-bg-color: #d33;
   --silverBox-deny-border-color: #d33;
@@ -161,6 +162,7 @@
   --silverBox-border-color: #171e2e;
   --silverBox-timer-bar: #555;
   --silverBox-title-color: #fff;
+  --silverBox-title-color-hover:#f15152;
   --silverBox-text-color: #9fa3ad;
   --silverBox-confirm-color: #fff;
   --silverBox-confirm-bg-color: #4c2b92;
@@ -341,6 +343,11 @@
   display: flex;
   align-items: center;
 }
+
+/*.silverBox-header-wrapper .silverBox-header-title:hover{
+  color: var(--silverBox-title-color-hover);
+}
+*/
 .silverBox-button .silverBox-button-loading-animation {
   display: none;
 }
@@ -377,6 +384,7 @@
 .silverBox-header-wrapper > * {
   margin-top: var(--silverBox-items-top-margin);
 }
+
 .silverBox-header-wrapper .silverBox-header-title {
   color: var(--silverBox-title-color);
   font-size: var(--silverBox-title-font-size);

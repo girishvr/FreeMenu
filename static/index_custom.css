@@ -12,15 +12,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-
 .alert-warning {
-    border-color: #fff;
-    background-color: #fff0f0;
-    color: #111;
+    border-color: #f15152;
+    background-color:#fff0f0; /*#fff0f0; f15152;*/
+    color: #f15152;
     font-family: "Cairo", sans-serif;
-    font-weight: 530;
+    border-width: 1px;
+/*    font-weight: bold;*/
 }
 
+.close{
+    color: #f15152;
+    text-shadow: 0 0px 0 #f15152; 
+    opacity: 1;
+}
 .styled-table {
 /*    border-collapse: collapse;*/
     margin: 15px 0;
