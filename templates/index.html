@@ -11,8 +11,8 @@
       <h3>{% block title %} Hello {{ name }}! {% endblock %}</h3>
 
       </br>
-
-      <form action = "http://localhost:5000/restaurant_menu" method = "POST">
+      <!-- <form action = "http://localhost:5000/restaurant_menu" method = "POST"> -->
+      <form action = "{{ url_for('restaurant_menu')}}" method = "POST">
          <p><b>Enter the name of the restaurant:</b></p>
          <p>
             <input type ="text" name = "rest_name" />

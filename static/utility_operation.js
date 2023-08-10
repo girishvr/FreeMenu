@@ -45,7 +45,8 @@ function addNewRestaurant() {
     let data = { rest_name: rest_name, restaurant_loc: rest_loc};
 
     // Call postData function   
-    postData('http://localhost:5000/create_new', data, "POST");
+    postData("{{ url_for('create_new')}}", data, "POST");
+    // postData('http://localhost:5000/create_new', data, "POST");
 
 }
 // SilverBox usage from the developers ://
