@@ -25,9 +25,9 @@
           <tbody>
               {% for item in result %}
                <tr>
-                  <td> {{ item['item_title'] }} </td>
+                  <td> {{ item['item_title'] }} </td> 
                   <td> {{ item['item_cost'] }} </td>
-                  <td ><input type="button" class="pheasant-demure-button solid light" value="X" onclick="SomeDeleteRowFunction(this)"/></td>
+                  <td ><input type="button" id="{{ item['menu_id'] }}" class="pheasant-demure-button solid light" value="X" onclick="SomeDeleteRowFunction(this, '{{url_for('delete_menu_item', item_id=item['menu_id'])}}')"/></td>
                </tr>
                {% endfor %}
           </tbody>

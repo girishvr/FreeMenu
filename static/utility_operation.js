@@ -2,7 +2,9 @@
 // All the operations that are reused
 
 function postData(path, params, method) {
-  
+
+    console.log(path);
+    
     // Create form
     const hidden_form = document.createElement('form');
 
@@ -28,6 +30,16 @@ function postData(path, params, method) {
     hidden_form.submit();
 }
 
+
+function SomeDeleteRowFunction(o, route) {
+     var p=o.parentNode.parentNode;
+     p.parentNode.removeChild(p);
+     console.log(o.id);
+    let data = {};
+    postData(route, data, "POST");
+
+     
+}   
 
 function addNewRestaurant() {
 
@@ -67,7 +79,6 @@ function addNewRestaurant() {
 //     },
 //   },
 // });
-
 
 
 function addRestAlert(){
