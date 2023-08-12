@@ -3,24 +3,6 @@ Free Menu Application For Restaurants
 
 ## This is a free menue project build using Flask 
 
-### Ref - Intial Set up
-	https://www.tutorialspoint.com/flask/flask_application.htm
-### Ref - Databse and rerouting set up
-	https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
-
-<!-- Resources -->
-<!-- Button -->
-### Ref - Custom Buttons
-	https://htmlcssfreebies.com/pheasant-demure-buttons
-
-<!-- Button -->
-### Ref - Custom Alert
-	https://silverboxjs.ir/
-
-<!-- QR Code -->
-### Ref - QR Code
-	 https://marcoagner.github.io/Flask-QRcode/
-
 ## First time setup on the system
 	- pip3 install Flask
 	- pip3 install Flask-QRcode
@@ -44,5 +26,23 @@ Free Menu Application For Restaurants
 
 	./build.sh
 
+################################################################################################
 
+### Ref - Intial Set up
+	https://www.tutorialspoint.com/flask/flask_application.htm
+### Ref - Databse and rerouting set up
+	https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
+### Ref - For Deployment on Apache
+	https://jqn.medium.com/deploy-a-flask-app-on-aws-ec2-1850ae4b0d41
+<!-- Resources -->
+<!-- Button -->
+### Ref - Custom Buttons
+	https://htmlcssfreebies.com/pheasant-demure-buttons
 
+<!-- Button -->
+### Ref - Custom Alert
+	https://silverboxjs.ir/
+
+<!-- QR Code -->
+### Ref - QR Code
+	 https://marcoagner.github.io/Flask-QRcode/
