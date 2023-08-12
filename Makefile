@@ -3,6 +3,7 @@ VENV := venv
 
 # default target, when make executed without arguments
 all: venv
+	./$(VENV)/bin/python3 -m venv venv
 
 $(VENV)/bin/activate: requirements.txt
 	python3 -m venv $(VENV)
