@@ -7,6 +7,7 @@ Free Menu Application For Restaurants
 	- pip3 install Flask
 	- pip3 install Flask-QRcode
 	- pip3 install virtualenv
+	- pip3 install gunicorn
 	- virtualenv venv
 
 ## Steps to set up database
@@ -17,6 +18,7 @@ Free Menu Application For Restaurants
 ### 1. Set up Flask Environment - install virtualenv for development environment		
 
 	source venv/bin/activate
+	gunicorn -b 0.0.0.0:8000 app:app
 
 ### 2. Go to the FreeMenu folder
 
