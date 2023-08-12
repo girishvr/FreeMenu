@@ -28,9 +28,9 @@ def restaurant_menu_result():
         
         if restaurant_found == None:
             # Show Alert
-            msg = f"Please Enter Restaurant Name! Or ADD A NEW RESTAURANT"
+            msg = f"Please Enter Restaurant Name! Or Check The Listing."
             if len(rest_name) > 0:
-                msg = f"Restauran Not Found! Try ADD NEW RESTAURANT"
+                msg = f"Restauran Not Found! Check The Listing."
 
             flash(msg)
             return redirect(url_for('index'))       

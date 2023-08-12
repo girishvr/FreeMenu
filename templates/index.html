@@ -25,13 +25,24 @@
 
       <!-- -------------------To Add New Restaurant------------------------ -->
       
-      <button type="button" class="pheasant-demure-button solid dark" onclick="addRestAlert()" >
+      <!-- <button type="button" class="pheasant-demure-button solid dark" onclick="addRestAlert()" >
         <span class="label">ADD NEW RESTAURANT</span>
-      </button>
+      </butto n> -->
 
       <!-- -------------------END of Add New Restaurant------------------------ -->
 
-      <!-- TODO - remove this after testing-->
+      <br>
+      
+      <!-- -------------------To List All Restaurant------------------------ -->
+      
+      <form action = "{{ url_for('restaurant_list')}}" method = "POST">
+      <button type="button" class="pheasant-demure-button solid dark">
+        <span class="label">LIST ALL RESTAURANT</span>
+      </button>
+      </form>
+      <!-- -------------------END of List All Restaurant------------------------ -->
+
+
       <script>
 
    </script>

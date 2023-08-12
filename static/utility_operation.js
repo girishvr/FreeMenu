@@ -56,9 +56,11 @@ function addNewRestaurant() {
     // Parameters
     let data = { rest_name: rest_name, restaurant_loc: rest_loc};
 
+    var base_url = window.location.origin;
+    let path = base_url + "/create_new"
+
     // Call postData function   
-    // postData("{{url_for('create_new_rest')}}", data, "POST");
-    postData('http://13.126.62.86:5000/create_new', data, "POST");
+    postData(path, data, "POST"); //'http://13.126.62.86:5000/create_new'
 
 }
 // SilverBox usage from the developers ://
@@ -82,8 +84,10 @@ function addNewRestaurant() {
 
 
 function addRestAlert(){
+    var base_url = window.location.origin;
+
     silverBox({
-       customIcon: "http://13.126.62.86:5000/static/images/dinner.png",
+       customIcon: base_url + "/static/images/dinner.png",
        title: {
               text: "Add New Restaurant"
        },

@@ -34,7 +34,7 @@
       </table>
 
       <hr>
-      <form action = "http://13.126.62.86:5000/add_menu/{{name}}" method = "GET">
+      <form action = "{{url_for('add_restaurant_menu', name = name)}}" method = "GET">
         <button type="submit" class="pheasant-demure-button solid dark" onclick="">
           <span class="label" >ADD MENU ITEM</span>
         </button>
@@ -42,7 +42,7 @@
     
     </br>
     
-    <form action = "http://13.126.62.86:5000/get_qr/{{name}}" method = "GET">
+    <form action = "{{url_for('get_qr', rest_name = name)}}" method = "GET">
         <button type="submit" class="pheasant-demure-button solid dark" >
           <span class="label" >GET QR CODE</span>
         </button>
@@ -53,6 +53,3 @@
 
 
 {% endblock %}
-    <!-- <form action = "{{ url_for('get_qr')}}+/{{name}}" method = "GET"> -->
-      <!-- <form action = "http://localhost:5000/add_menu/{{name}}" method = "GET"> -->
-
