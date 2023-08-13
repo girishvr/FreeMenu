@@ -1,8 +1,11 @@
 #app.py
 #First file for Flask project
+
 import sqlite3
+import os.path
 from flask_qrcode import QRcode
 from flask import Flask, render_template, request, redirect, url_for, flash
+
 
 app = Flask(__name__)
 
@@ -209,7 +212,13 @@ def get_qr(rest_name):
 
 
 def get_db_connection():
-    conn = sqlite3.connect("freemenu_database.db")
+
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    db_path = os.path.join(BASE_DIR, "freemenu_database.db")
+    # with sqlite3.connect(db_path) as db:
+    print(db_path)
+    # conn = sqlite3.connect("freemenu_database.db")
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
 
