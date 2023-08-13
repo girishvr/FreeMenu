@@ -11,7 +11,7 @@ with open('schema.sql') as f:
 cur = connection.cursor()
 
 cur.execute("INSERT INTO restaurants (restaurant_title, restaurant_location) VALUES (?, ?)",
-            ('Test', 'Nowhere')
+            ('Some Place Nice', 'Nowhere')
             )
 
 cur.execute("INSERT INTO restaurants (restaurant_title, restaurant_location) VALUES (?, ?)",
@@ -23,16 +23,29 @@ cur.execute("INSERT INTO restaurants (restaurant_title, restaurant_location) VAL
             )
 
 cur.execute("INSERT INTO menus (item_title,item_cost,item_restaurant_id) VALUES (?, ?, ?)",
-            ('Green Tea', '10', 2)
+            ('Green Tea', '10', 1)
             )
 
 cur.execute("INSERT INTO menus (item_title,item_cost,item_restaurant_id) VALUES (?, ?, ?)",
-            ('Black Tea', '20', 2)
+            ('Black Tea', '20', 1)
             )
 
 cur.execute("INSERT INTO menus (item_title,item_cost,item_restaurant_id) VALUES (?, ?, ?)",
-            ('Herbal Tea', '30', 2)
+            ('Herbal Tea', '30', 1)
             )
+
+cur.execute("INSERT INTO menus (item_title,item_cost,item_restaurant_id) VALUES (?, ?, ?)",
+            ('Roti', '10', 2)
+            )
+
+cur.execute("INSERT INTO menus (item_title,item_cost,item_restaurant_id) VALUES (?, ?, ?)",
+            ('Daal', '30', 2)
+            )
+
+cur.execute("INSERT INTO menus (item_title,item_cost,item_restaurant_id) VALUES (?, ?, ?)",
+            ('Rice - Plain', '30', 2)
+            )
+
 
 cur.execute("INSERT INTO menus (item_title,item_cost,item_restaurant_id) VALUES (?, ?, ?)",
             ('Coffee', '50', 3)

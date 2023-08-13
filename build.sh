@@ -3,6 +3,11 @@
 #source venv/bin/activate
 #python3 app.py
 
+echo "Build started..."
+
+echo "Local changes will be stashed..."
+git stash
+
 echo "Updating the files..."
 git pull origin master
 
