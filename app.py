@@ -17,7 +17,7 @@ app.secret_key = 'Free-Menu-GVR2003MANDVI'
 @app.route('/')
 def index():
     print("Index Page")
-    return render_template("index.html", name = "Darling")
+    return render_template("index.html", name = "Guest")
 
 
 
@@ -35,7 +35,7 @@ def restaurant_menu_result():
             if len(rest_name) > 0:
                 msg = f"Restauran Not Found! Check The Listing."
 
-            flash(msg)
+            flash(msg, category='warning')
             return redirect(url_for('index'))       
             # Stay on the same page         
             # return (''), 204      
@@ -108,10 +108,10 @@ def create_new_rest():
         restaurant_loc = request.form['restaurant_loc']
 
         if not rest_name:
-            flash('restaurant name/restaurant location is required!')
+            flash('Restaurant name/restaurant location is required!', category='warning')
         else:
             save_new_restaurant(rest_name, restaurant_loc)
-            flash("New Restaurant Added")
+            flash("New Restaurant Added", category='success')
             return redirect(url_for('restaurant_list'))
 
     return (''), 204
@@ -128,6 +128,9 @@ def add_rest_menu(rest_name):
         item_list = data.getlist('title')
         cost_list = data.getlist('cost')
 
+        save_failed = False
+        items_added = False
+
         # Check if restaurant exists
         restaurant_found = get_restaurant_by_name(rest_name)
 
@@ -142,15 +145,30 @@ def add_rest_menu(rest_name):
                 item_cost = cost_list[i]
             
                 if not item_title or not item_cost:
-                    flash('Title/Cost is required!')
-                    break
+                    save_failed = True
+                    continue
                 else:
                     save_menu_items(item_title, item_cost, item_restaurant_id)
+                    items_added = True
+
 
             # for loop end  
+
+        #Show Flash messages    
         
+        if save_failed == True:
+            flash_msg = "Some items not added. Title/cost is missing!"
+            flash_result = "warning"
+            flash(flash_msg, category=flash_result)
+    
+        if items_added == True:
+            flash_msg = "Menu Item(s) Saved."
+            flash_result = "success"
+            flash(flash_msg, category=flash_result)
+
+
         #Load Restaurant page with the menu
-        flash("Menu Item(s) Saved")
+        
         return redirect(url_for('restaurant_menu_result', rest_name = rest_name, rest_id = item_restaurant_id))       
 
         # return render_template("restaurant_menu.html", result = dict, name = rest_name)
@@ -179,7 +197,7 @@ def delete_menu_item(item_id):
     # dict = get_menu_for_restaurant(rest_id = restaurant_id)  
     rest_name = get_restaurant_name_from_id(restaurant_id)
 
-    flash('Item was successfully deleted!')
+    flash('Item was successfully deleted!', category='success')
 
     # Stay on the same page         
     # return (''), 204 
