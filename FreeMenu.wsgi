@@ -1,4 +1,4 @@
 import sys
-sys.path.insert(0, '/var/www/html/FreeMenu')
+sys.path.insert(0, '/var/www/FreeMenu')
 
 from app import app as application
