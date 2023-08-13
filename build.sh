@@ -3,6 +3,7 @@
 #source venv/bin/activate
 #python3 app.py
 
+
 echo "Build started..."
 
 echo "Local changes will be stashed..."
@@ -12,7 +13,9 @@ echo "Updating the files..."
 git pull origin master
 
 echo "Restarting the server..."
-sudo service apache2 restart
+echo "success" | sudo -S -k service apache2 restart
+
+# sudo service apache2 restart
 
 echo "Recent logs:"
 
