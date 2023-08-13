@@ -40,27 +40,31 @@ def restaurant_menu_result():
             # Stay on the same page         
             # return (''), 204      
         else:
+            rest_phone = restaurant_found['restaurant_phone']
             dict = get_menu_for_restaurant(rest_id = restaurant_found['rest_id'])         
             # print_sqlite_object(dict)
-            return render_template("restaurant_menu.html", result = dict, name = rest_name)
+            return render_template("restaurant_menu.html", result = dict, name = rest_name, contact = rest_phone)
             
     # implemented without exception handling - to be optimised later     
     if request.method == 'GET':            
 
         rest_id = request.args.get('rest_id')
         rest_name = request.args.get("rest_name")
+        rest_phone = request.args.get("contact")
 
         dict = get_menu_for_restaurant(rest_id = rest_id)
         # print_sqlite_object(dict)
-        return render_template("restaurant_menu.html", result = dict, name = rest_name)
+        return render_template("restaurant_menu.html", result = dict, name = rest_name, contact = rest_phone)
     
-        
+# NOT USED
+# Phone number has to be fetched and sent        
 @app.route('/restaurant_menu/<r_id>')
 def get_restaurant_by_id(r_id):
 
     dict = get_menu_for_restaurant(rest_id = r_id)  
     rest_name = get_restaurant_name_from_id(r_id)
 
+    # return render_template("restaurant_menu.html", result = dict, name = rest_name, contact = rest_phone)
     return render_template("restaurant_menu.html", result = dict, name = rest_name)
 
         
@@ -140,6 +144,7 @@ def add_rest_menu(rest_name):
         if restaurant_found != None:
 
             item_restaurant_id = restaurant_found['rest_id']
+            rest_phone = restaurant_found['restaurant_phone']
 
             # One by one add menue items
             for i in range(len(item_list)):
@@ -172,7 +177,7 @@ def add_rest_menu(rest_name):
 
         #Load Restaurant page with the menu
         
-        return redirect(url_for('restaurant_menu_result', rest_name = rest_name, rest_id = item_restaurant_id))       
+        return redirect(url_for('restaurant_menu_result', rest_name = rest_name, rest_id = item_restaurant_id, contact = rest_phone))       
 
         # return render_template("restaurant_menu.html", result = dict, name = rest_name)
         # return redirect(url_for('get_restaurant_menu', name = rest_name))       
@@ -196,16 +201,17 @@ def delete_menu_item(item_id):
     removed_item = remove_menu_items(item_id)
     
     restaurant_id = removed_item[0]['item_restaurant_id']
-
-    # dict = get_menu_for_restaurant(rest_id = restaurant_id)  
-    rest_name = get_restaurant_name_from_id(restaurant_id)
+    
+    dict = get_restaurant_by_id(restaurant_id)
+    rest_name = dict['restaurant_title']    #get_restaurant_name_from_id(restaurant_id)
+    rest_phone = dict['restaurant_phone']   #get_restaurant_phone_from_id(restaurant_id)
 
     flash('Item was successfully deleted!', category='success')
 
     # Stay on the same page         
     # return (''), 204 
     # return redirect(url_for('get_restaurant_by_id', r_id = restaurant_id))    
-    return redirect(url_for("restaurant_menu_result", rest_name = rest_name, rest_id = restaurant_id))
+    return redirect(url_for("restaurant_menu_result", rest_name = rest_name, rest_id = restaurant_id, contact = rest_phone))
 
 
 
@@ -298,6 +304,18 @@ def get_menu_for_restaurant(rest_id):
 
     return menus
 
+    
+
+def get_restaurant_phone_from_id(rest_id):
+    conn = get_db_connection()
+    
+    sql = f"""SELECT * FROM restaurants WHERE rest_id = {rest_id}"""
+    restaurants = conn.execute(sql).fetchall()
+    
+    conn.close()
+
+    return restaurants[0]["restaurant_phone"]    
+
 def get_restaurant_name_from_id(rest_id):
     conn = get_db_connection()
     
@@ -311,6 +329,16 @@ def get_restaurant_name_from_id(rest_id):
 # =============================================================
 
 # Using a custom factory to get row results as a pure dictionary.
+def get_restaurant_by_id(rest_id):
+    restaurant_found = None
+    conn = get_db_connection()
+    
+    sql = f"""SELECT * FROM restaurants WHERE rest_id = {rest_id}"""
+    restaurant_found = conn.execute(sql).fetchall()
+    
+    conn.close()
+
+    return restaurant_found[0] 
 
 def get_restaurant_by_name(rest_name):
     restaurant_found = None

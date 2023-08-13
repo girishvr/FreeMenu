@@ -31,7 +31,7 @@
           </thead>
           <tbody>
               {% for item in results %}
-               <tr onclick="loadRestaurant({{ item['rest_id'] }}, '{{ item['restaurant_title'] }}')">
+               <tr onclick="loadRestaurant({{ item['rest_id'] }}, '{{ item['restaurant_title'] }}', '{{ item['restaurant_phone'] }}')">
                   <td> {{ item['rest_id'] }} </td>
                   <td> {{ item['restaurant_title'] }} </td>
                   <td> {{ item['restaurant_location'] }} </td>
@@ -44,8 +44,8 @@
 
       <script>
   
-        function loadRestaurant(index, rest_name){
-            let data = { "rest_id": index, "rest_name" : rest_name};
+        function loadRestaurant(index, rest_name, rest_ph){
+            let data = { "rest_id": index, "rest_name" : rest_name, "contact" : rest_ph};
             console.log(data);
 
           // Call postData function - GET 
