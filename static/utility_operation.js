@@ -63,6 +63,7 @@ function addNewRestaurant() {
     // Get restaurant information from the input fields
     var rest_name = document.getElementById("rest_name").value;
     var rest_loc = document.getElementById("rest_loc").value;
+    var rest_phone = document.getElementById("rest_phone").value;
 
     // Validation check
     if (rest_name == "" || rest_loc == ""){
@@ -71,7 +72,7 @@ function addNewRestaurant() {
     }
 
     // Parameters
-    let data = { rest_name: rest_name, restaurant_loc: rest_loc};
+    let data = { rest_name: rest_name, restaurant_loc: rest_loc, rest_phone: rest_phone};
 
     var base_url = window.location.origin;
     let path = base_url + "/create_new"
@@ -119,6 +120,14 @@ function addRestAlert(){
                      placeHolder: "Enter Restaurant Name",
                      id: "rest_name",                          
                      maxLength: 30
+              },
+               {
+                     label: "Phone Number",
+                     type: "number",
+                     numberOnly:true,                
+                     placeHolder: "Enter Restaurant Phone Number",
+                     id: "rest_phone",                          
+                     maxLength: 10
               },
               {
                      label: "Location",

@@ -10,16 +10,16 @@ with open('schema.sql') as f:
 
 cur = connection.cursor()
 
-cur.execute("INSERT INTO restaurants (restaurant_title, restaurant_location) VALUES (?, ?)",
-            ('Some Place Nice', 'Nowhere')
+cur.execute("INSERT INTO restaurants (restaurant_title, restaurant_location, restaurant_phone) VALUES (?, ?, ?)",
+            ('Some Place Nice', 'Nowhere', '8787878789')
             )
 
-cur.execute("INSERT INTO restaurants (restaurant_title, restaurant_location) VALUES (?, ?)",
-            ('Royal', 'Hotel Royal, Hyderabad')
+cur.execute("INSERT INTO restaurants (restaurant_title, restaurant_location, restaurant_phone) VALUES (?, ?, ?)",
+            ('Royal', 'Hotel Royal, Hyderabad', '9898985600')
             )
 
-cur.execute("INSERT INTO restaurants (restaurant_title, restaurant_location) VALUES (?, ?)",
-            ('Sunrise', 'Hotel Sunrise, Delhi')
+cur.execute("INSERT INTO restaurants (restaurant_title, restaurant_location, restaurant_phone) VALUES (?, ?, ?)",
+            ('Sunrise', 'Hotel Sunrise, Delhi', '9988773300')
             )
 
 cur.execute("INSERT INTO menus (item_title,item_cost,item_restaurant_id) VALUES (?, ?, ?)",

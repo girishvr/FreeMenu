@@ -26,6 +26,7 @@
                   <th> # </th>
                   <th>Restaurant Name</th>
                   <th>Location</th>
+                  <th>Contact</th>
               </tr>
           </thead>
           <tbody>
@@ -34,6 +35,8 @@
                   <td> {{ item['rest_id'] }} </td>
                   <td> {{ item['restaurant_title'] }} </td>
                   <td> {{ item['restaurant_location'] }} </td>
+                  <td> {{ item['restaurant_phone'] }} </td>
+
                </tr>
                {% endfor %}
           </tbody>

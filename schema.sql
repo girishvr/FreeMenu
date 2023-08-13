@@ -6,7 +6,8 @@ CREATE TABLE restaurants (
     rest_id INTEGER PRIMARY KEY AUTOINCREMENT,
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     restaurant_title TEXT NOT NULL,
-    restaurant_location TEXT NOT NULL
+    restaurant_location TEXT NOT NULL,
+    restaurant_phone VARCHAR(14)    
 );
 
 

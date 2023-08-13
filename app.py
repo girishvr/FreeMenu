@@ -74,10 +74,12 @@ def get_restaurant_menu(name):
 
     restaurant_found = get_restaurant_by_name(name)
     if restaurant_found == None:
-        return redirect(url_for('get_restaurant_menu', name = "Test"))       
+        flash("Restaurant Not Found", category='fail')
+        # return redirect(url_for('get_restaurant_menu', name = "Test"))       
     else:
+        phone = restaurant_found['restaurant_phone']
         dict = get_menu_for_restaurant(rest_id = restaurant_found['rest_id'])         
-        return render_template("get_menu.html", result = dict, name = name)
+        return render_template("get_menu.html", result = dict, name = name, contact = phone)
 
     # Stay on the same page         
     return (''), 204
@@ -106,11 +108,12 @@ def create_new_rest():
 
         rest_name = request.form['rest_name']
         restaurant_loc = request.form['restaurant_loc']
+        restaurant_phone = request.form['rest_phone']
 
         if not rest_name:
             flash('Restaurant name/restaurant location is required!', category='warning')
         else:
-            save_new_restaurant(rest_name, restaurant_loc)
+            save_new_restaurant(rest_name, restaurant_loc, restaurant_phone)
             flash("New Restaurant Added", category='success')
             return redirect(url_for('restaurant_list'))
 
@@ -256,9 +259,9 @@ def get_all_restaurants():
 
     return restaurants
 
-def save_new_restaurant(rest_name, restaurant_loc):
+def save_new_restaurant(rest_name, restaurant_loc, restaurant_phone):
     conn = get_db_connection()
-    conn.execute('INSERT INTO restaurants (restaurant_title, restaurant_location) VALUES (?, ?)',(rest_name, restaurant_loc))
+    conn.execute('INSERT INTO restaurants (restaurant_title, restaurant_location, restaurant_phone) VALUES (?, ?, ?)',(rest_name, restaurant_loc, restaurant_phone))
     conn.commit()
     conn.close()
 
