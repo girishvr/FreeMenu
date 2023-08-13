@@ -1,0 +1,55 @@
+<!-- restaurant_menu.html -->
+
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+   <body>
+   
+      </br>
+     
+      <h3>The Restaurant Name: {{ name }}!</h3>
+
+      </br>
+
+      <table class="styled-table">
+          <thead>
+              <tr>
+                  <th>Menu Item</th>
+                  <th>Cost</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for item in result %}
+               <tr>
+                  <td> {{ item['item_title'] }} </td> 
+                  <td> {{ item['item_cost'] }} </td>
+                  <td ><input type="button" id="{{ item['menu_id'] }}" class="pheasant-demure-button solid light" value="X" onclick="SomeDeleteRowFunction(this, '{{url_for('delete_menu_item', item_id=item['menu_id'])}}')"/></td>
+               </tr>
+               {% endfor %}
+          </tbody>
+      </table>
+
+      <hr>
+      <form action = "{{url_for('add_restaurant_menu', name = name)}}" method = "GET">
+        <button type="submit" class="pheasant-demure-button solid dark" onclick="">
+          <span class="label" >ADD MENU ITEM</span>
+        </button>
+      </form>
+    
+    </br>
+    
+    <form action = "{{url_for('get_qr', rest_name = name)}}" method = "GET">
+        <button type="submit" class="pheasant-demure-button solid dark" >
+          <span class="label" >GET QR CODE</span>
+        </button>
+    </form>
+
+   </body>
+
+
+
+{% endblock %}

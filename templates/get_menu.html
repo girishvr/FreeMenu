@@ -1,0 +1,51 @@
+<!-- get_menu.html -->
+
+
+<!-- Copy of -->
+<!-- restaurant_menu.html -->
+
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+	<body>
+   
+		</br>
+
+		<h3>The Restaurant Name: {{ name }}!</h3>
+
+		</br>
+
+		<!-- TODO - this is temporary - can cause security risk -->
+		<style type="text/css">
+			.navbar-expand-md {
+				display: none;
+			}
+		</style>
+
+		<table class="styled-table">
+		  <thead>
+		      <tr>
+		          <th>Menu Item</th>
+		          <th>Cost</th>
+		      </tr>
+		  </thead>
+		  <tbody>
+		      {% for item in result %}
+		       <tr>
+		          <td> {{ item['item_title'] }} </td>
+		          <td> {{ item['item_cost'] }} </td>
+		       </tr>
+		       {% endfor %}
+		  </tbody>
+		</table>
+
+		<hr>
+
+	</body>
+
+
+
+{% endblock %}

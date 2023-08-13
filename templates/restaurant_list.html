@@ -1,0 +1,70 @@
+<!-- restaurant_list.html -->
+
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+	<head>
+        <meta charset="utf-8">
+        <title>Free Menu</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index_custom.css') }}"/>
+    </head>
+
+
+	<body>
+   
+      </br>
+      <h3>Restaurant on FreeMenu App</h3>
+      <hr>
+      </br>      
+
+      <table class="styled-table">
+          <thead>
+              <tr>
+                  <th> # </th>
+                  <th>Restaurant Name</th>
+                  <th>Location</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for item in results %}
+               <tr onclick="loadRestaurant({{ item['rest_id'] }}, '{{ item['restaurant_title'] }}')">
+                  <td> {{ item['rest_id'] }} </td>
+                  <td> {{ item['restaurant_title'] }} </td>
+                  <td> {{ item['restaurant_location'] }} </td>
+               </tr>
+               {% endfor %}
+          </tbody>
+      </table>
+
+      <script>
+  
+        function loadRestaurant(index, rest_name){
+            let data = { "rest_id": index, "rest_name" : rest_name};
+            console.log(data);
+
+          // Call postData function - GET 
+          // postData('http://localhost:5000/restaurant_menu', data, "GET");
+          postData("{{ url_for('restaurant_menu_result')}}", data, "GET");
+        }
+
+      </script>
+
+      </br>
+
+      <!-- -------------------To Add New Restaurant------------------------ -->
+      
+      <button type="button" class="pheasant-demure-button solid dark" onclick="addRestAlert()" >
+        <span class="label">ADD NEW RESTAURANT</span>
+      </button>
+
+      <!-- -------------------END of Add New Restaurant------------------------ -->
+
+  
+
+
+{% endblock %}
+
+

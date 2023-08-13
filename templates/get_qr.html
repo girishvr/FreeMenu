@@ -1,0 +1,89 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+	<body>
+
+		<style type="text/css">
+			.qr-view {
+				background-color: ivory;
+			}
+		</style>
+
+		<div class="qr-view" id="qr-view">
+		<br>
+		<h2 class="center">Welcome to hotel {{rest_name}}</h2>
+		<br>
+		<br>
+
+		<!-- TODO - this is temporary - can cause security risk -->
+		<style type="text/css">
+			.navbar-expand-md {
+				display: none;
+			}
+		</style>
+
+
+		<img src="{{ qrcode(rest_link) }}" class="center" download>
+
+		<br>
+		<br>
+
+		<!-- qr-view -->
+		</div>
+
+
+		<hr>
+		<br>
+
+		<!-- Download the Qr Code -->
+		<a class="pheasant-demure-button solid dark" href="{{ qrcode(rest_link) }}" download="{{rest_name}}-Restaurant-Menu.png"> DOWNLOAD QR CODE IMAGE </a>
+
+		<br>
+
+		<br>
+
+		<button type="button" id="btn-download" class="pheasant-demure-button solid dark" >
+          <span class="label" >GET QR CODE PDF</span>
+        </button>
+
+		<script>
+			$('#btn-download').click(function () { 
+            html2canvas(document.getElementById('qr-view'), {
+               onrendered: function(canvas) {
+
+           	        // const imgProps= pdf.getImageProperties(imgData);
+			        // const pdfWidth = pdf.internal.pageSize.getWidth();
+			        // const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+			        // pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+			        // pdf.save('download.pdf');
+               		console.log(canvas.width);
+               		console.log(canvas.height);
+
+                   var data = canvas.toDataURL("image/png");
+                   var docDefinition = {
+	                   	pageSize: {
+		                    width: canvas.width,
+		                    height: canvas.height
+		                },
+                       content: [{
+                               image: data,
+                                width: canvas.width,
+			                    height: canvas.height
+                           }],
+                       pageMargins: [ 0, 0, 0, 0 ]
+                   };
+
+                   pdfMake.createPdf(docDefinition).download("{{rest_name}}-Restaurant-Menu.pdf");
+               },                     
+               logging: true,
+               useCORS:true,           
+           });
+           });
+		</script>
+
+	</body>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+/*index_custom.css*/
+
+
+* {
+/* font-size: 100%;*/
+ font-family: "Cairo", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Cairo", sans-serif;
+    color: #000;
+    text-align: center;    
+}
+
+/*Align image in qr page to ceter of the page*/
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.alert-warning {
+    border-color: #f15152;
+    background-color:#fff0f0; /*#fff0f0; f15152;*/
+    color: #f15152;
+    font-family: "Cairo", sans-serif;
+    border-width: 1px;
+/*    font-weight: bold;*/
+}
+
+.close{
+    color: #f15152;
+    text-shadow: 0 0px 0 #f15152; 
+    opacity: 1;
+}
+.styled-table {
+/*    border-collapse: collapse;*/
+    margin: 15px 0;
+    font-size: 0.9em;
+    font-family: "Cairo", sans-serif;
+    min-width: 300px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/*Styling the header*/
+
+.styled-table thead tr {
+    background-color: #000;
+    color: #ffffff;
+    text-align: left;
+}
+
+
+/*Moving onto the table cells*/
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+
+/*And the table rows...*/
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #000;
+}
+
+
+/*Lastly, let's make the active row look different*/
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}

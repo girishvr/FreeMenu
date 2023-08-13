@@ -1,0 +1,55 @@
+<!-- Index file -->
+<!-- Start of the application FreeMenu -->
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+      </br>
+
+      <h3>{% block title %} Hello {{ name }}! {% endblock %}</h3>
+
+      </br>
+      <form action = "{{ url_for('restaurant_menu_result')}}" method = "POST">
+         <p><b>Enter the name of the restaurant:</b></p>
+         <p>
+            <input type ="text" name = "rest_name" />
+         </p>
+         
+         <p> 
+            <input type = "submit" class="pheasant-demure-button solid dark" value = "Get Menu" />
+         </p>         
+
+      </form>   
+
+      <!-- -------------------To Add New Restaurant------------------------ -->
+      
+      <!-- <button type="button" class="pheasant-demure-button solid dark" onclick="addRestAlert()" >
+        <span class="label">ADD NEW RESTAURANT</span>
+      </butto n> -->
+
+      <!-- -------------------END of Add New Restaurant------------------------ -->
+
+      <br>
+      
+      <!-- -------------------To List All Restaurant------------------------ -->
+      
+      <form action = "{{ url_for('restaurant_list')}}" method = "GET">
+      <button type="submit" class="pheasant-demure-button solid dark">
+        <span class="label">LIST ALL RESTAURANT</span>
+      </button>
+      </form>
+      <!-- -------------------END of List All Restaurant------------------------ -->
+
+
+      <script>
+
+   </script>
+
+      
+{% endblock %}
+
+      <!-- <button type="button" class="pheasant-demure-button solid dark" onclick="showAlertNow()" > -->
+
+      <!-- <form action = "http://localhost:5000/restaurant_menu" method = "POST"> -->
