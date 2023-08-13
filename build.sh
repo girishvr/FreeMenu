@@ -13,9 +13,7 @@ echo "Updating the files..."
 git pull origin master
 
 echo "Restarting the server..."
-echo "success" | sudo -S -k service apache2 restart
-
-# sudo service apache2 restart
+sudo service apache2 restart
 
 echo "Recent logs:"
 
