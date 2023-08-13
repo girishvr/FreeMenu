@@ -32,11 +32,28 @@ function postData(path, params, method) {
 
 
 function SomeDeleteRowFunction(o, route) {
-     var p=o.parentNode.parentNode;
-     p.parentNode.removeChild(p);
-     console.log(o.id);
-    let data = {};
-    postData(route, data, "POST");
+
+    silverBox({
+       alertIcon: "question",
+       text: "Remove the menu item?",
+       centerContent: true,
+       confirmButton: {
+              text: "Remove",
+              closeOnClick: true,
+              onClick : () => {
+                var p=o.parentNode.parentNode;
+                p.parentNode.removeChild(p);
+                console.log(o.id);
+                let data = {};
+                postData(route, data, "POST");                
+              }
+       },
+       cancelButton: {
+              text: "Cancel"
+       }
+})
+
+    
 
      
 }   

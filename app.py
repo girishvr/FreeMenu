@@ -33,7 +33,7 @@ def restaurant_menu_result():
             # Show Alert
             msg = f"Please Enter Restaurant Name! Or Check The Listing."
             if len(rest_name) > 0:
-                msg = f"Restauran Not Found! Check The Listing."
+                msg = f"Restaurant Not Found! Check The Listing."
 
             flash(msg, category='warning')
             return redirect(url_for('index'))       
