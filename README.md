@@ -18,7 +18,7 @@ Free Menu Application For Restaurants
 ### 1. Set up Flask Environment - install virtualenv for development environment		
 
 	source venv/bin/activate
-	gunicorn -b 0.0.0.0:8000 app:app
+	gunicorn -b 0.0.0.0:5000 app:app
 
 ### 2. Go to the FreeMenu folder
 
