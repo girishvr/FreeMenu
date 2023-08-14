@@ -24,6 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 .copyright {
     float: right;
     color: #444;
+    font-size: 12px;
 }
 
 .footer { 
@@ -31,7 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .qr-view {
-    background-color: ivory;
+    background-color: #f4d0b5;
 }
 
 .alert-warning {
