@@ -20,6 +20,20 @@ h1, h2, h3, h4, h5, h6 {
   width: 50%;
 }
 
+/*Used on qr page for branding*/
+.copyright {
+    float: right;
+    color: #444;
+}
+
+.footer { 
+    float: right;
+}
+
+.qr-view {
+    background-color: ivory;
+}
+
 .alert-warning {
     border-color: #f15152;
     background-color:#fff0f0; /*#fff0f0; f15152;*/
